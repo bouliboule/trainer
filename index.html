@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Trainer</title>
+  <meta name="description" content="Generate structured indoor workouts for your Garmin Edge.">
+  <meta name="theme-color" content="#0f1115">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="top">
+    <h1>Trainer</h1>
+    <span class="ftp-badge" id="ftpBadge"></span>
+  </header>
+
+  <main>
+    <!-- WORKOUT -->
+    <section id="view-workout" class="view active">
+      <div class="card" id="suggestCard">
+        <h2>Suggested for today</h2>
+        <div id="suggestions" class="suggestions"></div>
+      </div>
+
+      <div class="card">
+        <h2>Build a workout</h2>
+        <label class="lbl">Type</label>
+        <div id="typePicker" class="chips types"></div>
+        <p id="typeBlurb" class="muted small"></p>
+
+        <label class="lbl" for="duration">Duration <b id="durationLabel"></b></label>
+        <input type="range" id="duration" min="20" max="180" step="5">
+        <div class="chips quick" id="durationChips"></div>
+
+        <label class="lbl">Difficulty</label>
+        <div class="segmented" id="levelPicker"></div>
+      </div>
+
+      <div class="card" id="preview">
+        <div class="preview-head">
+          <div>
+            <h2 id="wName"></h2>
+            <p class="muted small" id="wMeta"></p>
+          </div>
+          <button class="icon-btn" id="regen" title="Another variation" aria-label="Another variation">↻</button>
+        </div>
+        <div class="stats" id="wStats"></div>
+        <div id="chart" class="chart"></div>
+        <div class="actions">
+          <button class="btn primary" id="download">Download .FIT</button>
+          <button class="btn" id="share" hidden>Share…</button>
+        </div>
+        <details class="steps-wrap">
+          <summary>Steps</summary>
+          <ol id="steps" class="steps"></ol>
+        </details>
+      </div>
+
+      <details class="card help">
+        <summary>How to load it on the Edge 530</summary>
+        <ol>
+          <li>Download the <code>.fit</code> file.</li>
+          <li>Plug the Edge into a computer with USB. Copy the file into <code>Garmin/NewFiles</code>.</li>
+          <li>Unplug. The Edge moves it into <code>Garmin/Workouts</code> on boot.</li>
+          <li>On the Edge: <b>Training → Workouts</b>, pick it, and ride. With your trainer paired as a <b>Smart Trainer</b> (ANT+ FE-C), the Edge controls resistance in ERG mode.</li>
+        </ol>
+        <p class="muted small">No computer handy? Upload the .fit to a calendar service that syncs to Garmin Connect (e.g. intervals.icu) and it will reach the Edge wirelessly.</p>
+      </details>
+    </section>
+
+    <!-- HISTORY -->
+    <section id="view-history" class="view">
+      <div class="card">
+        <h2>Last 7 days</h2>
+        <div class="stats" id="weekStats"></div>
+        <div id="weekBars" class="week-bars"></div>
+      </div>
+      <div class="card">
+        <h2>History</h2>
+        <p class="muted small">Workouts are logged when you download them. Delete the ones you didn't ride — suggestions are based on this list.</p>
+        <ul id="historyList" class="history"></ul>
+      </div>
+    </section>
+
+    <!-- SETTINGS -->
+    <section id="view-settings" class="view">
+      <form class="card" id="settingsForm">
+        <h2>Settings</h2>
+        <label class="field"><span>FTP (watts)</span><input type="number" name="ftp" min="50" max="600" required></label>
+        <label class="field"><span>Power targets in file</span>
+          <select name="targetMode">
+            <option value="watts">Absolute watts (from FTP above)</option>
+            <option value="percent">% of FTP (Edge uses its own FTP)</option>
+          </select>
+        </label>
+        <label class="field"><span>Warm-up (min)</span><input type="number" name="warmupMin" min="3" max="30"></label>
+        <label class="field"><span>Cool-down (min)</span><input type="number" name="cooldownMin" min="3" max="20"></label>
+        <label class="field"><span>Default weekday duration (min)</span><input type="number" name="weekdayMinutes" min="20" max="180" step="5"></label>
+        <label class="field"><span>Default weekend duration (min)</span><input type="number" name="weekendMinutes" min="20" max="180" step="5"></label>
+        <label class="field"><span>Weekly TSS target</span><input type="number" name="weeklyTss" min="100" max="1500" step="10"></label>
+        <p class="muted small" id="zonesTable"></p>
+        <button class="btn primary" type="submit">Save</button>
+        <span class="saved" id="savedMsg" hidden>Saved</span>
+      </form>
+    </section>
+  </main>
+
+  <nav class="tabs">
+    <button data-view="workout" class="active">Workout</button>
+    <button data-view="history">History</button>
+    <button data-view="settings">Settings</button>
+  </nav>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
