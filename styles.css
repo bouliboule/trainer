@@ -37,13 +37,13 @@ html, body { margin: 0; }
 body {
   background: var(--bg);
   color: var(--text);
-  font: 500 15px/1.45 "Space Grotesk", ui-sans-serif, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font: 500 15px/1.45 "Avenir Next", Avenir, "Helvetica Neue", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   padding-bottom: calc(80px + env(safe-area-inset-bottom));
   -webkit-tap-highlight-color: transparent;
 }
 main { max-width: 720px; margin: 0 auto; padding: 0 16px; }
 h1 {
-  font-size: 26px; margin: 0; font-weight: 700; letter-spacing: -0.03em; text-transform: uppercase;
+  font-size: 26px; margin: 0; font-weight: 800; letter-spacing: -0.03em; text-transform: uppercase;
   background: var(--hi); color: #111; border: var(--bw) solid var(--ink); box-shadow: var(--shadow-sm);
   padding: 2px 10px; transform: rotate(-2deg);
 }
@@ -118,7 +118,7 @@ input[type=range] { width: 100%; accent-color: var(--accent); height: 24px; }
 .suggestion:first-child .bar { border-color: #111; }
 
 .preview-head { display: flex; justify-content: space-between; gap: 12px; align-items: flex-start; }
-.preview-head h2 { margin-bottom: 4px; font-size: 20px; text-transform: none; letter-spacing: -0.02em; }
+.preview-head h2 { margin-bottom: 4px; font-size: 20px; font-weight: 800; text-transform: none; letter-spacing: -0.02em; }
 .preview-head p { margin: 0; }
 .icon-btn {
   border: var(--bw) solid var(--ink); background: var(--z2); color: #111; box-shadow: var(--shadow-sm);
@@ -131,7 +131,7 @@ input[type=range] { width: 100%; accent-color: var(--accent); height: 24px; }
 .stat:nth-child(2) { background: var(--accent); }
 .stat:nth-child(3) { background: var(--z3); }
 .stat:nth-child(4) { background: var(--z6); }
-.stat b { display: block; font-size: 20px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.stat b { display: block; font-size: 20px; font-weight: 800; font-variant-numeric: tabular-nums; }
 .stat span { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
 
 .chart { position: relative; border: var(--bw) solid var(--ink); background: var(--card2); padding: 8px 6px 0; }
@@ -148,7 +148,7 @@ input[type=range] { width: 100%; accent-color: var(--accent); height: 24px; }
 .actions { display: flex; gap: 12px; margin-top: 18px; }
 .btn {
   flex: 1; border: var(--bw) solid var(--ink); background: var(--card); color: var(--text); box-shadow: var(--shadow);
-  padding: 13px 16px; font: inherit; font-weight: 700; font-size: 16px; text-transform: uppercase; letter-spacing: 0.03em; cursor: pointer;
+  padding: 13px 16px; font: inherit; font-weight: 800; font-size: 16px; text-transform: uppercase; letter-spacing: 0.03em; cursor: pointer;
 }
 .btn.primary { background: var(--accent); color: #111; }
 
